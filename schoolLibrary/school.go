@@ -29,6 +29,19 @@ func NewSchool(name string) *school {
 
     return &newSchool
 }
+
+func (s school) GetNextClassId() int {
+    nextClassId += 1
+    return nextClassId
+}
+func (s school) GetNextTeacherId() int {
+    nextTeacherId += 1
+    return nextTeacherId
+}
+func (s school) GetNextStudentId() int {
+    nextStudentId += 1
+    return nextStudentId
+}
  
 func (s school) UpdateName(newName string) {
     s.name = newName
