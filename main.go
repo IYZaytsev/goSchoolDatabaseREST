@@ -8,7 +8,7 @@ import (
     "./schoolLibrary"
 )
 
-var School schoolLib.School
+var School *schoolLib.School
 
 func main() {
 

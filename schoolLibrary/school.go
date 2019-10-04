@@ -3,7 +3,6 @@ package schoolLib
 import (
     "math/rand"
     "time"
-    "encoding/json"
 
     "fmt"
 )
@@ -20,7 +19,7 @@ type School struct {
     name            string
 }
 
-func NewSchool(name string) School {
+func NewSchool(name string) *School {
     newSchool := *new(School)
 
     newSchool.name = name
@@ -30,7 +29,9 @@ func NewSchool(name string) School {
 
     newSchool.autoSeed()
 
-    return newSchool
+    fmt.Println(newSchool.classes)
+
+    return &newSchool
 }
 
 func (s School) GetNextClassId() int {
@@ -51,7 +52,7 @@ func (s School) UpdateName(newName string) {
 }
 
 //hacked together auto-generate for testing purposes
-func (s School) autoSeed() {
+func (s *School) autoSeed() {
     for ; s.nextStudentId < 10120; s.nextStudentId++ {
         s.students = append(s.students, Student{id: s.nextStudentId, name: fmt.Sprintf("student %d", s.nextStudentId)})
     }
