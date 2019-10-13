@@ -1,5 +1,7 @@
 package schoollib
 
+import "strconv"
+
 //Student struct holds information about a student
 type Student struct {
 	ID        int
@@ -11,16 +13,45 @@ type Student struct {
 type Students []Student
 
 //GetStudents returns a slice of all students
-func (s School) GetStudents() Student {
-	/*
-			studentIds := make([]int, len(s.students))
+func (s School) GetStudents() Students {
 
-			for i := range s.students {
-				studentIds[i] = s.students[i].id
-		    }
+	allStudents := make([]Student, len(s.students))
 
-		    return studentIds
+	for i := range s.students {
+		allStudents[i] = s.students[i]
+	}
 
-	*/
-	return s.students[0]
+	return allStudents
+
+}
+
+//SearchStudents  takes in some search parameters and returns a slice of students who match
+func (s School) SearchStudents(studentName string, className string, studentID string) Students {
+
+	//used to hold search results
+	//map set is to prevent students from being added to searchResults twice
+	searchResults := Students{}
+	set := make(map[int]Student)
+	ID, _ := strconv.Atoi(studentID)
+
+	//iterates over all students to find ones with IDs or Names that Match
+	for i := range s.students {
+		if s.students[i].ID == ID || s.students[i].Name == studentName {
+			searchResults = append(searchResults, s.students[i])
+			set[s.students[i].ID] = s.students[i]
+		}
+		//iterates over every students class list to see if the name matches
+		//will not add student to slice if already in slice
+		for z := range s.students[i].ClassList {
+			if s.students[i].ClassList[z].Name == className {
+				if _, ok := set[s.students[i].ID]; ok {
+					continue
+				}
+				searchResults = append(searchResults, s.students[i])
+			}
+		}
+	}
+
+	return searchResults
+
 }

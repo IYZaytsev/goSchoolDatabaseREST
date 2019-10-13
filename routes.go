@@ -30,21 +30,27 @@ var routes = Routes{
 		StudentCreation,
 	},
 	Route{
-		"StudentIndex",
+		"TeacherCreation",
+		"POST",
+		"/teachers/create",
+		TeacherCreation,
+	},
+	Route{
+		"ClassCreation",
+		"POST",
+		"/classes/create",
+		ClassCreation,
+	},
+	Route{
+		"StudentSearch",
 		"GET",
-		"/students",
-		StudentIndex,
+		"/students/search",
+		StudentSearch,
 	},
 	Route{
 		"TeacherIndex",
 		"GET",
 		"/teachers",
 		TeacherIndex,
-	},
-	Route{
-		"test",
-		"GET",
-		"/test",
-		test,
 	},
 }

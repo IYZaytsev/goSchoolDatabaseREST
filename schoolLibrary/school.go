@@ -35,13 +35,44 @@ func NewSchool(name string) *School {
 //AddStudent adds a new student to the school
 func (s *School) AddStudent(studentName string) Student {
 	newStudent := Student{ID: s.nextStudentID, Name: studentName}
-	s.students = append(s.students, Student{ID: s.nextStudentID, Name: studentName})
+	s.students = append(s.students, newStudent)
 	s.nextStudentID++
-	fmt.Println(s.nextStudentID)
+	fmt.Println("student Created: ", newStudent)
 	return newStudent
 
 }
 
+//AddTeacher adds a new teacher to the school
+func (s *School) AddTeacher(teacherName string) Teacher {
+	newTeacher := Teacher{ID: s.nextTeacherID, Name: teacherName}
+	s.teachers = append(s.teachers, newTeacher)
+	s.nextTeacherID++
+	fmt.Println("Teacher Created: ", newTeacher)
+	return newTeacher
+
+}
+
+//AddClass adds a new teacher to the school
+func (s *School) AddClass(className string) Class {
+	newClass := Class{ID: s.nextClassID, Name: className}
+	s.classes = append(s.classes, newClass)
+	s.nextClassID++
+	fmt.Println("Teacher Created: ", newClass)
+	return newClass
+
+}
+
+//AddClass adds a new class to the school
+/*
+func (s *School) AddClass(teacherName string) Teacher {
+	newTeacher := Teacher{id: s.nextTeacherID, Name: fmt.Sprintf("teacher %d", s.nextTeacherID)}
+	s.teachers = append(s.teachers, newTeacher)
+	s.nextTeacherID++
+	fmt.Println(s.nextTeacherID)
+	return newTeacher
+
+}
+*/
 //hacked together auto-generate for testing purposes
 /*
 func (s *School) autoSeed() {

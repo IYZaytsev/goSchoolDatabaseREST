@@ -1,22 +1,23 @@
 package main
 
 import (
-    "log"
-    "net/http"
-    "fmt"
+	"fmt"
+	"log"
+	"net/http"
 
-    "./schoolLibrary"
+	schoollib "./schoolLibrary"
 )
 
-var School *schoolLib.School
+//School is captial here so it can be accesed within the handlers.go file
+var School *schoollib.School
 
 func main() {
 
-    School = schoolLib.NewSchool("oak grove")
+	School = schoollib.NewSchool("oak grove")
 
-    fmt.Println("starting router")
+	fmt.Println("starting router")
 
-    router := NewRouter()
+	router := NewRouter()
 
-    log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", router))
 }

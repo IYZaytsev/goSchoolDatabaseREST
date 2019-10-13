@@ -2,10 +2,10 @@ package schoollib
 
 //Class struct holds information about a class
 type Class struct {
-	id       int
-	students Students
-	teacher  Teacher
-	name     string
+	ID              int
+	StudentList     Students
+	AssignedTeacher Teacher
+	Name            string
 }
 
 //Classes slice holds all classes in the school
@@ -16,7 +16,7 @@ func (s School) GetClasses() []int {
 	classId := make([]int, len(s.classes))
 
 	for i := range s.classes {
-		classId[i] = s.classes[i].id
+		classId[i] = s.classes[i].ID
 	}
 
 	return classId
@@ -25,8 +25,8 @@ func (s School) GetClasses() []int {
 func (s School) GetClasseTeacher(classId int) int {
 
 	for i := range s.classes {
-		if s.classes[i].id == classId {
-			return s.classes[i].teacher.id
+		if s.classes[i].ID == classId {
+			return s.classes[i].AssignedTeacher.ID
 		}
 	}
 
@@ -36,10 +36,10 @@ func (s School) GetClasseTeacher(classId int) int {
 func (s School) GetClasseStudents(classId int) []int {
 
 	for i := range s.classes {
-		if s.classes[i].id == classId {
-			studentsID := make([]int, len(s.classes[i].students))
-			for z := range s.classes[i].students {
-				studentsID[z] = s.classes[i].students[z].ID
+		if s.classes[i].ID == classId {
+			studentsID := make([]int, len(s.classes[i].StudentList))
+			for z := range s.classes[i].StudentList {
+				studentsID[z] = s.classes[i].StudentList[z].ID
 			}
 			return studentsID
 		}
