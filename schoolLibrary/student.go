@@ -1,6 +1,8 @@
 package schoollib
 
-import "strconv"
+import (
+	"strconv"
+)
 
 //Student struct holds information about a student
 type Student struct {
@@ -55,4 +57,25 @@ func (s School) SearchStudents(studentName string, className string, studentID s
 
 	return searchResults
 
+}
+
+//UpdateStudent assigns a student to a class and updates name
+func (s School) UpdateStudent(studentID int, studentName string, className string) {
+	//iterates over all students to find ones with IDs or Names that Match
+	for i := range s.students {
+
+		if s.students[i].ID == studentID {
+			s.students[i].Name = studentName
+
+			if className != "none" {
+				for z := range s.classes {
+					if s.classes[z].Name == className {
+						s.students[i].ClassList = append(s.students[i].ClassList, s.classes[z])
+					}
+
+				}
+			}
+
+		}
+	}
 }

@@ -4,6 +4,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
+	"strings"
 )
 
 func StudentUpdate(w http.ResponseWriter, r *http.Request) {
@@ -17,5 +19,9 @@ func StudentUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	parameter := string(body)
+	searchCriteria := strings.Split(parameter, "/")
+	className, studentName := searchCriteria[0], searchCriteria[2]
+	studentID, _ := strconv.Atoi(searchCriteria[1])
+	School.UpdateStudent(studentID, studentName, className)
 
 }
