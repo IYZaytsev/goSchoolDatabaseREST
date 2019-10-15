@@ -45,6 +45,31 @@ func (s School) SearchClasses(className string, teacherName string, classID stri
 
 }
 
+//UpdateClass updates a class name
+func (s School) UpdateClass(classID int, className string) {
+	//iterates over all class to find ones with IDs or Names that Match
+	for i := range s.classes {
+
+		if s.classes[i].ID == classID {
+			s.classes[i].Name = className
+			for z := range s.students {
+				for y := range s.students[z].ClassList {
+					if s.students[z].ClassList[y].ID == classID {
+						s.students[z].ClassList[y].Name = className
+					}
+				}
+			}
+			for z := range s.teachers {
+				for y := range s.teachers[z].ClassList {
+					if s.teachers[z].ClassList[y].ID == classID {
+						s.teachers[z].ClassList[y].Name = className
+					}
+				}
+			}
+		}
+	}
+}
+
 /*
 func (s School) GetClasseTeacher(classId int) int {
 

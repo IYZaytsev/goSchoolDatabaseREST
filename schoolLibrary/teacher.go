@@ -54,3 +54,31 @@ func (s School) SearchTeachers(teacherName string, className string, teacherID s
 	return searchResults
 
 }
+
+//UpdateTeacher assigns a teacher to a class and updates name
+func (s School) UpdateTeacher(teacherID int, teacherName string, className string) {
+	//iterates over all teacher to find ones with IDs or Names that Match
+	for i := range s.teachers {
+
+		if s.teachers[i].ID == teacherID {
+			s.teachers[i].Name = teacherName
+
+			if className != "none" {
+				for z := range s.classes {
+					if s.classes[z].Name == className {
+						s.teachers[i].ClassList = append(s.teachers[i].ClassList, s.classes[z])
+						s.classes[z].AssignedTeacher = s.teachers[i]
+					}
+
+				}
+			}
+			for z := range s.classes {
+
+				if s.classes[z].AssignedTeacher.ID == teacherID {
+					s.classes[z].AssignedTeacher.Name = teacherName
+				}
+
+			}
+		}
+	}
+}

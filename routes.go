@@ -57,4 +57,23 @@ var routes = Routes{
 		"/students/update",
 		StudentUpdate,
 	},
+	Route{
+		"TeacherUpdate",
+		"PUT",
+		"/teachers/update",
+		TeacherUpdate,
+	},
+
+	Route{
+		"ClassUpdate",
+		"PUT",
+		"/classes/update",
+		ClassUpdate,
+	},
+	Route{
+		"StudentDelete",
+		"DELETE",
+		"/students/delete",
+		StudentDelete,
+	},
 }
