@@ -1,7 +1,6 @@
 package schoollib
 
 import (
-	"fmt"
 	"strconv"
 )
 
@@ -90,7 +89,7 @@ func (s School) UpdateStudent(studentID int, studentName string, className strin
 }
 
 //DeleteStudent deletes student from all classes and main student list
-func (s School) DeleteStudent(studentID int) {
+func (s *School) DeleteStudent(studentID int) {
 
 	studentSliceALL := make(Students, 0)
 	studentSliceClass := make(Students, 0)
@@ -105,7 +104,7 @@ func (s School) DeleteStudent(studentID int) {
 	}
 
 	s.students = studentSliceALL
-	fmt.Println(s.students)
+
 	for i := range s.classes {
 		for z := range s.classes[i].StudentList {
 			if s.classes[i].StudentList[z].ID == studentID {
@@ -114,6 +113,7 @@ func (s School) DeleteStudent(studentID int) {
 			studentSliceClass = append(studentSliceClass, s.classes[i].StudentList[z])
 		}
 		s.classes[i].StudentList = studentSliceClass
-		fmt.Println(s.classes[i].StudentList)
+
 	}
+
 }

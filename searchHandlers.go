@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -25,7 +24,7 @@ func StudentSearch(w http.ResponseWriter, r *http.Request) {
 	searchCriteria := strings.Split(parameter, "/")
 
 	name, class, id := searchCriteria[0], searchCriteria[1], searchCriteria[2]
-	fmt.Println(parameter)
+
 	//if all search criteria are empty then it sends a slice of all students
 	if len(name) == 0 && len(class) == 0 && len(id) == 0 {
 

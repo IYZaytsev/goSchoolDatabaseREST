@@ -70,43 +70,43 @@ func (s School) UpdateClass(classID int, className string) {
 	}
 }
 
-/*
-func (s School) GetClasseTeacher(classId int) int {
+//DeleteClass deletes class
+func (s *School) DeleteClass(classID int) {
 
+	classSliceALL := make(Classes, 0)
+	classSliceStudent := make(Classes, 0)
+	classSliceTeacher := make(Classes, 0)
+	//iterates over all students to delete the student
 	for i := range s.classes {
-		if s.classes[i].ID == classId {
-			return s.classes[i].AssignedTeacher.ID
+
+		if s.classes[i].ID == classID {
+			continue
+
 		}
+		classSliceALL = append(classSliceALL, s.classes[i])
 	}
 
-	return -1
-}
+	s.classes = classSliceALL
 
-func (s School) GetClasseStudents(classId int) []int {
-
-	for i := range s.classes {
-		if s.classes[i].ID == classId {
-			studentsID := make([]int, len(s.classes[i].StudentList))
-			for z := range s.classes[i].StudentList {
-				studentsID[z] = s.classes[i].StudentList[z].ID
+	for i := range s.students {
+		for z := range s.students[i].ClassList {
+			if s.students[i].ClassList[z].ID == classID {
+				continue
 			}
-			return studentsID
+			classSliceStudent = append(classSliceStudent, s.students[i].ClassList[z])
 		}
+		s.students[i].ClassList = classSliceStudent
+
 	}
-	return nil
-}
-*/
-/*
 
-func (s school) AddClass(c Class) error {
-    s.classes = append(s.classes, c)
-}
-func(s school) findClass(id int) Class {
-    for _, class := range s.classes {
-        if class.id == id {
-            return Class
-        }
-    }
-}
+	for i := range s.teachers {
+		for z := range s.teachers[i].ClassList {
+			if s.teachers[i].ClassList[z].ID == classID {
+				continue
+			}
+			classSliceTeacher = append(classSliceStudent, s.teachers[i].ClassList[z])
+		}
+		s.teachers[i].ClassList = classSliceTeacher
 
-*/
+	}
+}

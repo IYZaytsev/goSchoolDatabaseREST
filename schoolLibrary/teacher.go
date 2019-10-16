@@ -1,6 +1,8 @@
 package schoollib
 
-import "strconv"
+import (
+	"strconv"
+)
 
 //Teacher struct holds information about a student
 type Teacher struct {
@@ -81,4 +83,30 @@ func (s School) UpdateTeacher(teacherID int, teacherName string, className strin
 			}
 		}
 	}
+}
+
+//DeleteTeacher deletes student from all classes and main student list
+func (s *School) DeleteTeacher(teacherID int) {
+
+	teacherSliceALL := make(Teachers, 0)
+	//iterates over all students to delete the student
+	for i := range s.teachers {
+
+		if s.teachers[i].ID == teacherID {
+			continue
+
+		}
+		teacherSliceALL = append(teacherSliceALL, s.teachers[i])
+	}
+
+	s.teachers = teacherSliceALL
+
+	for i := range s.classes {
+
+		if s.classes[i].AssignedTeacher.ID == teacherID {
+			s.classes[i].AssignedTeacher = Teacher{}
+		}
+
+	}
+
 }

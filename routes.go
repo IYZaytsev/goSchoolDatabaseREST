@@ -63,7 +63,6 @@ var routes = Routes{
 		"/teachers/update",
 		TeacherUpdate,
 	},
-
 	Route{
 		"ClassUpdate",
 		"PUT",
@@ -75,5 +74,17 @@ var routes = Routes{
 		"DELETE",
 		"/students/delete",
 		StudentDelete,
+	},
+	Route{
+		"TeacherDelete",
+		"DELETE",
+		"/teachers/delete",
+		TeacherDelete,
+	},
+	Route{
+		"ClassDelete",
+		"DELETE",
+		"/classes/delete",
+		ClassDelete,
 	},
 }
