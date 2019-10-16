@@ -12,7 +12,11 @@ Example of a exposing an database with a API in a microservice architecture
 ## Installation
 
 `git clone https://github.com/IYZaytsev/goSchoolDatabaseREST`
+
 `cd goSchoolDatabaseREST`
+
 `go get -u github.com/gorilla/mux`
+
 `go build`
+
 `./goSchoolDatabaseREST`
