@@ -37,7 +37,7 @@ func TeacherDelete(w http.ResponseWriter, r *http.Request) {
 	School.DeleteTeacher(teacherID)
 }
 
-//TeacherDelete Deletes teacher
+//ClassDelete Deletes Class
 func ClassDelete(w http.ResponseWriter, r *http.Request) {
 
 	//gets passed ID for deletion
