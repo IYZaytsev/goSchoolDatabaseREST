@@ -50,6 +50,30 @@ func main() {
 	School.AddClass("Trigonometry")
 	School.AddClass("Geometry")
 
+	//Adding relationships
+	School.UpdateStudent(10000, "Colby Legge", "Geometry")
+	School.UpdateStudent(10000, "Colby Legge", "Trigonometry")
+	School.UpdateStudent(10000, "Colby Legge", "Statistics")
+	School.UpdateStudent(10000, "Colby Legge", "Precalculus")
+	School.UpdateStudent(10001, "Mariya Snider", "Meteorology")
+	School.UpdateStudent(10001, "Mariya Snider", "Geometry")
+	School.UpdateStudent(10003, "Usamah Clemons", "British Literature")
+	School.UpdateStudent(10003, "Usamah Clemons	", "Geometry")
+	School.UpdateStudent(10006, "Neel Mcneill", "Geometry")
+	School.UpdateStudent(10006, "Neel Mcneill", "World Literature")
+	School.UpdateStudent(10009, "Ishmael Mansell", "World Literature")
+	School.UpdateStudent(10009, "Ishmael Mansell", "Geometry")
+	School.UpdateStudent(10010, "Shola Hebert", "British Literature")
+	School.UpdateStudent(10010, "Shola Hebert", "Physical Education (P.E.)")
+
+	School.UpdateTeacher(10000, "Ritchie Clarke", "British Literature")
+	School.UpdateTeacher(10000, "Ritchie Clarke", "World Literature")
+	School.UpdateTeacher(10001, "Gia Leech", "Physical Education (P.E.)")
+	School.UpdateTeacher(10002, "Jay-Jay Dawe", "Geometry")
+	School.UpdateTeacher(10003, "Usmaan Hall", "Statistics")
+	School.UpdateTeacher(10004, "Kaan Goodwin", "Precalculus")
+	School.UpdateTeacher(10005, "Yassin Cook", "Trigonometry")
+
 	fmt.Println("starting router")
 
 	router := NewRouter()

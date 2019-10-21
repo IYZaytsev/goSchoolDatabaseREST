@@ -113,7 +113,7 @@ func (s *School) DeleteStudent(studentID int) {
 			studentSliceClass = append(studentSliceClass, s.classes[i].StudentList[z])
 		}
 		s.classes[i].StudentList = studentSliceClass
-
+		studentSliceClass = nil
 	}
 
 }

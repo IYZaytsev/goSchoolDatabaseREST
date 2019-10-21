@@ -1,6 +1,8 @@
 package schoollib
 
-import "strconv"
+import (
+	"strconv"
+)
 
 //Class struct holds information about a class
 type Class struct {
@@ -89,6 +91,7 @@ func (s *School) DeleteClass(classID int) {
 	s.classes = classSliceALL
 
 	for i := range s.students {
+
 		for z := range s.students[i].ClassList {
 			if s.students[i].ClassList[z].ID == classID {
 				continue
@@ -96,7 +99,7 @@ func (s *School) DeleteClass(classID int) {
 			classSliceStudent = append(classSliceStudent, s.students[i].ClassList[z])
 		}
 		s.students[i].ClassList = classSliceStudent
-
+		classSliceStudent = nil
 	}
 
 	for i := range s.teachers {
@@ -107,6 +110,6 @@ func (s *School) DeleteClass(classID int) {
 			classSliceTeacher = append(classSliceStudent, s.teachers[i].ClassList[z])
 		}
 		s.teachers[i].ClassList = classSliceTeacher
-
+		classSliceTeacher = nil
 	}
 }
